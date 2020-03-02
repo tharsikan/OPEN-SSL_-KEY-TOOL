@@ -3,7 +3,7 @@ i'm going to genetate key_pair,  sign(hash the message{public_key + provided inf
 when it done by another well known CA's private_key that is known as cretificate.
 
 ## java Keytool  
-**Create a folder _Keys_ open in terminal**  
+**Create a folder _Keys_ open it in terminal**  
 It comes with JRE.  
 use to create own public/private key pairs and associated certificates for use in self-authentication.  
   
@@ -21,8 +21,8 @@ so with out this no one can edit digist
 				Organizational unit  
 				Locality or city  
 				State or province  
-				Country or region     
-  				
+				Country or region       
+    				
 2. `keytool -list -v -keystore DebKeyStore.jks`    
 **list :** list all key_pair.    
 **v :** human readable form (provided info).    
@@ -31,13 +31,24 @@ so with out this no one can edit digist
 **protected :** now it wont ask (Key Store Password), but it only display key_paire names.   
 
 4. `keytool -list  -rfc  -keystore DebKeyStore.jks`  
-**rfc :** show all self-signed certificate.    
-  
+**rfc :** show all self-signed certificate (encrypted).    
+
+#### export certificate(CER)  
 5. `keytool -export -alias Deb -file Deb.cer -keystore DebKeyStore.jks`  
 **export :** export that self-signed certificate.  
 **file :** with in this file.  
 
+6. `keytool -printcert -file Deb.cer`  
+**printcert :** print certificate.  
+
+#### create certificate signing request(CSR)   
+CER won't work in browsers, we need well known CA's Cretificate. we need to make request.
+7. `keytool -certreq -alias Deb -keystore DebKeyStore.jks -file Deb.csr`  
+**certreq :** create csr.    
+
+## Openssl  
+**Create a folder _ open it in terminal**  
+It comes with JRE.  
+use to create own public/private key pairs and associated certificates for use in self-authentication.  
 
 
-
-keytool -printcert -v -file Deb.cer 
