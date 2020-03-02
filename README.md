@@ -3,9 +3,9 @@ i'm going to genetate key_pair,  sign(hash the message{public_key + provided inf
 when it done by another well known CA's private_key that is known as cretificate.
 
 ## java Keytool  
-**Create a folder _Keys_ open it in terminal**  
 It comes with JRE.  
 use to create own public/private key pairs and associated certificates for use in self-authentication.  
+**Create a folder _Keys_ open it in terminal**  
   
 1. `keytool -genkey -alias Deb -keystore DebKeyStore.jks -keyalg RSA -sigalg SHA1withRSA`  
 **genkey :** create key_pair  
@@ -16,12 +16,7 @@ use to create own public/private key pairs and associated certificates for use i
 **SHA1withRSA :** hash the message(public_key, provided info) with SHA1, then encrypt it using a RSA private key.   
 - Key Store Password >	password of the KeyStore.jks. (which is inside this KeyStore), by using this digist maked, 
 so with out this no one can edit digist 
-- provide info > Certificate owner's common name  
-				Organization  
-				Organizational unit  
-				Locality or city  
-				State or province  
-				Country or region       
+- provide info > Certificate owner's common name, ..    
     				
 2. `keytool -list -v -keystore DebKeyStore.jks`    
 **list :** list all key_pair.    
@@ -47,8 +42,11 @@ CER won't work in browsers, we need well known CA's Cretificate. we need to make
 **certreq :** create csr.    
 
 ## Openssl  
-**Create a folder _ open it in terminal**  
-It comes with JRE.  
-use to create own public/private key pairs and associated certificates for use in self-authentication.  
+By this we are gonna create single tier CA, so root CA and issuing CA are the same.  
+**Create a folder _Keys_ open it in terminal**  
+1. `set RANDFILE= myRand`  
+Openssl commands need to save a random seed information to a file _myRand_.   
+
+2. 
 
 
