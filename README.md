@@ -1,37 +1,24 @@
-## Welcome to GitHub Pages
+# SSL  
+i'm going to genetate key_pair,  sign(hash the message{public_key + provided info}, then encrypt it with my private_key then send origenal message and encription to client),  
+when it done by another well known CA's private_key that is known as cretificate.
 
-You can use the [editor on GitHub](https://github.com/tharsikan/OPEN-SSL_-KEY-TOOL/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/tharsikan/OPEN-SSL_-KEY-TOOL/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## java Keytool  
+**Create a folder _Keys_ open in terminal**  
+It comes with JRE.  
+use to create own public/private key pairs and associated certificates for use in self-authentication.  
+  
+1. `keytool -genkey -alias Deb -keystore DebKeyStore.jks -keyalg RSA -sigalg SHA1withRSA`  
+**genkey :** create key_pair  
+**alias :**	short name of key_pair  
+**keystore :** store key_pair into a file(jks it stores keys and certificate. this may hold many keys, it is password protected file.)  
+**keyalg :** Key generation algorithm. RSA(mostly used)/ DSA(default)  
+**sigalg :** signature algorithm. (make self-signed certificate)  
+**SHA1withRSA :** hash the message(public_key, provided info) with SHA1, then encrypt it using a RSA private key.   
+- Key Store Password >	password of the KeyStore.jks. (which is inside this KeyStore), by using this digist maked, 
+so with out this no one can edit digist 
+- provide info > Certificate owner's common name  
+				Organization  
+				Organizational unit  
+				Locality or city  
+				State or province  
+				Country or region  
